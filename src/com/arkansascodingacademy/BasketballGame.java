@@ -25,8 +25,14 @@ public class BasketballGame
                 gameOver = true;
                 System.out.println("Home Team Wins!");
             }
+            else if (visitor.getPoints() >= 21)
+            {
+                gameOver = true;
+                System.out.println("Visiting Team Wins!");
+            }
 
-            //TODO BRONZE Code the visitor team
+
+            //TODO BRONZE Code the visitor team COMPLETE?
 
         }
     }
@@ -34,27 +40,51 @@ public class BasketballGame
     private void playRound()
     {
         dice.roll();
+        System.out.println(dice.getTotalValue() + " is home teams roll");
 
-        //TODO BRONZE Print out the dice rolls
+        //TODO BRONZE Print out the dice rolls  COMPLETE
 
-        int points = getPoints(dice.getTotalValue());
+        int homePoints = getPoints(dice.getTotalValue());
 
-        home.scorePoints(points);
+        home.scorePoints(homePoints);
 
-        //TODO BRONZE Code the visitor team
+        dice.roll();
+        System.out.println(dice.getTotalValue() + " is visiting teams roll!");
+
+        int visitorPoints = getPoints(dice.getTotalValue());
+
+        visitor.scorePoints(visitorPoints);
+
+        //TODO BRONZE Code the visitor team COMPLETE
 
     }
 
     //Given a number return the correct number of points to add
-    //TODO BRONZE Translate other values
-    //TODO BRONZE Print out the description of the play result for each outcome
+    //TODO BRONZE Translate other values  COMPLETE
+    //TODO BRONZE Print out the description of the play result for each outcome  COMPLETE
     private int getPoints(int number)
     {
         int points = 0;
 
-        if (number == 2)
+        if (number == 2 || number == 10 || number == 12)
         {
             points = 3;
+            System.out.println("scored a 3 pointer yo!");
+        }
+        else if (number == 4 || number == 6 || number == 8) //4, 6, 8
+        {
+            points = 2;
+            System.out.println("scored a 2 poiiiiints with the assist.");
+        }
+        else if (number == 5) //5
+        {
+            points = 1;
+            System.out.println("scored a solitary point.");
+        }
+        else if (number == 3 || number == 7 || number == 9 || number == 11 ) //3, 7, 9, 11 are all lose ball
+        {
+            points = 0;
+            System.out.println("Turnover!");
         }
 
         return points;
