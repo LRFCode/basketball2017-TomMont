@@ -23,12 +23,12 @@ public class BasketballGame
             if (home.getPoints() >= 21)
             {
                 gameOver = true;
-                System.out.println("Home Team Wins!");
+                System.out.println(home.getTeam() + " Team Wins!");
             }
             else if (visitor.getPoints() >= 21)
             {
                 gameOver = true;
-                System.out.println("Visiting Team Wins!");
+                System.out.println(visitor.getTeam() + " Team Wins!");
             }
 
 
