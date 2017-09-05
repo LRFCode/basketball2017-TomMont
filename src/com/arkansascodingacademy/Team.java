@@ -6,6 +6,7 @@ package com.arkansascodingacademy;
 public class Team
 {
     private int points = 0;
+    private final String team;
 
     public int getPoints()
     {
@@ -15,5 +16,14 @@ public class Team
     public void scorePoints(int points)
     {
         this.points += points;
+    }
+
+    public Team(String name)
+    {
+        this.team = name;
+    }
+    public String getTeam()
+    {
+        return team;
     }
 }

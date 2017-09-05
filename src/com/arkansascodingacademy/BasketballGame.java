@@ -1,16 +1,16 @@
 package com.arkansascodingacademy;
 
-//BRONZE See below
-//SILVER Add a team name to the constructor for team and use the team name when printing out game info
-//SILVER Add a third die and your own additional points based on it
+//BRONZE See below COMPLETE
+//SILVER Add a team name to the constructor for team and use the team name when printing out game info COMPLETE
+//SILVER Add a third die and your own additional points based on it COMPLETE
 //GOLD If both teams "win" on the same turn with the same score go into
 //     overtime...next score wins
 //GOLD If a team scores a foul shot let them have another turn
 public class BasketballGame
 {
     private Dice dice = new Dice();
-    private Team home = new Team();
-    private Team visitor = new Team();
+    private Team home = new Team("Tacos");
+    private Team visitor = new Team("Burgers");
 
     public void play()
     {
@@ -40,7 +40,7 @@ public class BasketballGame
     private void playRound()
     {
         dice.roll();
-        System.out.println(dice.getTotalValue() + " is home teams roll");
+        System.out.println(dice.getTotalValue() + " is " + home.getTeam() + " roll");
 
         //TODO BRONZE Print out the dice rolls  COMPLETE
 
@@ -49,7 +49,7 @@ public class BasketballGame
         home.scorePoints(homePoints);
 
         dice.roll();
-        System.out.println(dice.getTotalValue() + " is visiting teams roll!");
+        System.out.println(dice.getTotalValue() + " is " + visitor.getTeam() + " roll");
 
         int visitorPoints = getPoints(dice.getTotalValue());
 
@@ -85,6 +85,11 @@ public class BasketballGame
         {
             points = 0;
             System.out.println("Turnover!");
+        }
+        else if (number == 13 || number == 14 || number == 15 || number == 16 || number == 17 || number ==18 )
+        {
+            points = 4;
+            System.out.println("You did the impossible!  4 points!");
         }
 
         return points;
